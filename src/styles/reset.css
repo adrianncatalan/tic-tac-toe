@@ -40,7 +40,7 @@ input[type="password"],
 input[type="email"],
 input[type="number"],
 textarea {
-    width: 100%;
+    width: 70%;
     padding: 8px;
     font-size: inherit;
     line-height: inherit;
@@ -105,6 +105,3 @@ select {
     font-size: 16px;
 }
 
-.full-width {
-    width: 100%;
-}

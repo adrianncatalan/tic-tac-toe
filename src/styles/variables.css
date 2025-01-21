@@ -1,0 +1,47 @@
+/* variables.css */
+:root {
+    /* Colors */
+    --color-red: red;
+    --color-blue: blue;
+    --color-white: white;
+    --color-black: black;
+    --color-light-gray: #f1f1f1;
+    --color-dark-gray: #282c34;
+    --color-primary: #3498db;
+    --color-primary-hover: #2980b9;
+    --color-secondary: #e74c3c;
+    --color-secondary-hover: #c0392b;
+    --color-success: #4CAF50;
+    --color-success-hover: #45a049;
+    --color-disabled: #bdc3c7;
+    --color-disabled-text: #7f8c8d;
+    --color-warning: #f39c12;
+    --color-warning-hover: #e67e22;
+    --color-footer-link: #61dafb;
+
+    /* Font sizes */
+    --font-size-small: 14px;
+    --font-size-medium: 1rem;
+    --font-size-large: 2rem;
+
+    /* Dimensions */
+    --width-cell: 100px;
+    --height-cell: 100px;
+    --width-board: 70%;
+    --width-modal: 70%;
+    --height-modal: 80%;
+    --width-right-side: 50%;
+    --footer-height: 20px;
+
+    /* Spacing */
+    --padding-button: 10px 20px;
+    --margin-button: 10px;
+    --gap-board: 5px;
+
+    /* Shadows */
+    --box-shadow-button-hover: 0 0 10px 2px rgba(255, 255, 255, 0.5);
+    --box-shadow-footer: 0 -2px 5px rgba(0, 0, 0, 0.2);
+
+    /* Transitions */
+    --transition-ease: ease-in-out 0.3s;
+}

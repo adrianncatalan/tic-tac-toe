@@ -1,16 +1,17 @@
+@import './variables.css';
+
 .right-side {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f1f1f1;
-    padding: 0;
-  }
-  
-  .right-side img {
-    width: 100%;
-    height: auto;
-    object-fit: fill; 
-    display: block;
-  }
-  
+  width: var(--width-right-side);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-light-gray);
+  padding: 0;
+}
+
+.right-side img {
+  width: 100%;
+  height: auto;
+  object-fit: fill;
+  display: block;
+}

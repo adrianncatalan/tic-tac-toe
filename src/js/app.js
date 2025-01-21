@@ -18,14 +18,67 @@ const gameSection = document.querySelector('#game');
 const modal = document.querySelector('#modal');
 const startButton = document.querySelector('#start');
 const winnerMessage = document.querySelector('.winner');
-const player2Section = document.querySelector('#player2-section');
-const difficultySection = document.querySelector('#difficulty-section');
-const validationModal = document.querySelector('#validation-modal'); // Validation modal
-const validationMessage = document.querySelector('#validation-message');
-const closeValidationModalButton = document.querySelector('#close-validation-modal');
 const resetAll = document.getElementById('reset-all');
+const yearSpan = document.getElementById('current-year');
+const buttons = document.querySelectorAll('.button-only');
+const humanButton = document.getElementById('human');
+const computerButton = document.getElementById('computer');
+const player1Input = document.getElementById('player1');
+const player2Input = document.getElementById('player2');
 
-// Functior to reset all
+// Variable to check if the game mode has been selected
+let gameModeSelected = false;
+
+// Function to check if both inputs are full or if only Player 1 is full (when the mode is “computer”).
+const checkInputsAndEnableButton = () => {
+  const player1Valid = player1Input.value.trim() !== '';
+  const player2Valid = player2Input.style.display !== 'none' ? player2Input.value.trim() !== '' : true;
+
+  // Enable button if both fields have value or only Player 1 has value depending on game mode
+  if (gameModeSelected === 'human') {
+    // If the mode is “Human”, both players must have one name
+    startButton.disabled = !(player1Valid && player2Valid);
+  } else if (gameModeSelected === 'computer') {
+    // If the mode is “Computer”, only Player 1 must have a name
+    startButton.disabled = !player1Valid;
+  }
+};
+
+// Function to enable the game mode and activate the button
+const enableStartButton = (mode) => {
+  gameModeSelected = mode; // Sets the selected game mode (human or computer)
+  checkInputsAndEnableButton(); // Check if the button can now be enabled.
+};
+
+// Adding input events to text fields
+player1Input.addEventListener('input', checkInputsAndEnableButton);
+player2Input.addEventListener('input', checkInputsAndEnableButton);
+
+// Adding click events to mode selection buttons
+humanButton.addEventListener('click', () => enableStartButton('human'));
+computerButton.addEventListener('click', () => enableStartButton('computer'));
+
+// Call the function to make sure the button is disabled at startup
+startButton.disabled = true;
+
+// Function active buttons
+const toggleActiveState = (event) => {
+  const button = event.target;
+
+  buttons.forEach(btn => btn.classList.remove('active'));
+  button.classList.add('active');
+};
+buttons.forEach(button => {
+  button.addEventListener('click', toggleActiveState);
+});
+
+// Function to get the current year
+const getCurrentYear = () => {
+  const currentYear = new Date().getFullYear();
+  yearSpan.textContent = currentYear
+}
+
+// Function to reset all
 const reset = () => {
   resetAll.addEventListener('click', () => {
     location.reload();
@@ -82,25 +135,64 @@ const computerMove = () => {
   let availableCells = board.map((val, index) => val === null ? index : null).filter(val => val !== null);
   let move;
   if (difficulty === 'easy') {
-    move = availableCells[Math.floor(Math.random() * availableCells.length)];
+    move = easyAI(availableCells); // Easy AI, random move
   } else if (difficulty === 'medium') {
-    move = mediumAI(availableCells);
+    move = mediumAI(availableCells); // Medium AI, smart move based on available cells
   } else if (difficulty === 'hard') {
-    move = hardAI(availableCells);
+    move = hardAI(availableCells); // Hard AI, aggressive strategy
   }
 
   board[move] = 'O';
   updateBoard();
 };
 
+// Function for easy difficulty
+const easyAI = (availableCells) => {
+  return availableCells[Math.floor(Math.random() * availableCells.length)];
+};
+
 // Function for medium difficulty
 const mediumAI = (availableCells) => {
+  // Try to block the player from winning, otherwise pick randomly
+  let move = null;
+
+  // Check for possible player win and block it
+  move = findBlockingMove(availableCells, 'X');
+  if (move !== null) return move;
+
+  // If no blocking move, pick a random available cell
   return availableCells[Math.floor(Math.random() * availableCells.length)];
 };
 
 // Function for hard difficulty
 const hardAI = (availableCells) => {
+  // Try to win if possible, otherwise block the player
+  let move = null;
+
+  // Check for possible AI win and take it
+  move = findBlockingMove(availableCells, 'O');
+  if (move !== null) return move;
+
+  // If no winning move, check if player can win and block it
+  move = findBlockingMove(availableCells, 'X');
+  if (move !== null) return move;
+
+  // If no winning or blocking move, pick randomly
   return availableCells[Math.floor(Math.random() * availableCells.length)];
+};
+
+// Function to find blocking move
+const findBlockingMove = (availableCells, player) => {
+  for (let i = 0; i < availableCells.length; i++) {
+    const cell = availableCells[i];
+    board[cell] = player; // Temporarily make the move
+    if (checkWinner(board) === player) {
+      board[cell] = null; // Undo the move
+      return cell; // Return the blocking move
+    }
+    board[cell] = null; // Undo the move if no winner
+  }
+  return null; // No blocking move found
 };
 
 // Function to reset the game
@@ -130,18 +222,6 @@ const startGame = () => {
   // Only ask for difficulty if the game is against the computer
   difficulty = gameMode === 'computer' ? document.querySelector('#difficulty').value : 'easy';
 
-  // Validate that Player 1 has a name
-  if (!player1) {
-    showValidationModal('Player 1 must have a name!');
-    return;
-  }
-
-  // If the game is in "human" mode, validate that Player 2 has a name
-  if (gameMode === 'human' && !player2) {
-    showValidationModal('Player 2 must have a name!');
-    return;
-  }
-
   // Randomly determine who starts
   currentPlayer = Math.random() < 0.5 ? 'X' : 'O';  // 50% chance for X or O to start
 
@@ -155,17 +235,6 @@ const startGame = () => {
   gameSection.style.display = 'block'; // Show the game
   resetGame(); // Reset the game
 };
-
-// Function to show the validation modal
-const showValidationModal = (message) => {
-  validationMessage.textContent = message; // Set the error message
-  validationModal.style.display = 'flex'; // Show the modal
-};
-
-// Function to close the validation modal
-closeValidationModalButton.addEventListener('click', () => {
-  validationModal.style.display = 'none'; // Close the validation modal
-});
 
 // Assign the click event to each cell
 cells.forEach((cell, index) => {
@@ -197,3 +266,5 @@ document.querySelector('#computer').addEventListener('click', () => {
 // Start the game
 updateBoard();
 reset();
+getCurrentYear();
+checkInputsAndEnableButton();

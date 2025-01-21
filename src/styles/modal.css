@@ -1,29 +1,6 @@
-#validation-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(204, 28, 28, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-  
-}
+@import './variables.css';
 
-#validation-modal .validation-modal-content {
-  display: flex;
-  flex-direction: row;
-  width: 70%;
-  height: 80%;
-  background-color: rgb(141, 160, 201);
-  border-radius: 8px;
-  overflow: hidden;
-  
-}
-
-#validation-modal .validation-modal-content .left-side {
+.left-side {
   flex: 1;
   padding: 20px;
   text-align: center;
@@ -32,8 +9,8 @@
   justify-content: center;
 }
 
-#validation-modal .validation-modal-content .right-side {
-  width: 50%;
+.right-side {
+  width: var(--width-right-side);
   background-image: url('https://i.postimg.cc/52WKyXH2/enter-user-name.webp');
   background-size: cover;
   background-position: center;
@@ -50,13 +27,14 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  padding: 50px 0 100px 0;
 }
 
 #modal .modal-content {
   display: flex;
   flex-direction: row;
-  width: 70%;
-  height: 80%;
+  width: var(--width-modal);
+  height: var(--height-modal);
   background-color: rgb(156, 185, 121);
   border-radius: 8px;
   overflow: hidden;
@@ -73,7 +51,7 @@
 }
 
 #modal .modal-content .right-side {
-  width: 50%;
+  width: var(--width-right-side);
   background-image: url('https://i.postimg.cc/NMM1FDGw/tic-tac-toe-image.jpg');
   background-size: cover;
   background-position: center;

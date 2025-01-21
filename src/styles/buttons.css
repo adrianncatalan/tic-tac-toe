@@ -1,13 +1,64 @@
+@import './variables.css';
+
 button {
-  padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
+  padding: var(--padding-button);
+  color: var(--color-white);
   border: none;
   cursor: pointer;
-  font-size: 1rem;
-  margin: 10px;
+  font-size: var(--font-size-medium);
+  margin: var(--margin-button);
+  width: var(--width-board);
+  transition: var(--transition-ease);
 }
 
-button:hover {
-  background-color: #45a049;
+.button-only:hover {
+  transform: scale(1.05);
+}
+
+.button-only.active {
+  border: 3px solid var(--color-white);
+  box-shadow: var(--box-shadow-button-hover);
+}
+
+#human {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+#human:hover {
+  background-color: var(--color-primary-hover);
+}
+
+#computer {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+}
+
+#computer:hover {
+  background-color: var(--color-secondary-hover);
+}
+
+#start {
+  background-color: var(--color-success);
+  color: var(--color-white);
+}
+
+#start:hover {
+  background-color: var(--color-success-hover);
+}
+
+#start:disabled {
+  background-color: var(--color-disabled);
+  color: var(--color-disabled-text);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+#reset-all {
+  background-color: var(--color-warning);
+  color: var(--color-white);
+}
+
+#reset-all:hover {
+  background-color: var(--color-warning-hover);
 }

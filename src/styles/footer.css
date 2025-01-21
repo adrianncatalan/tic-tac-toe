@@ -1,0 +1,23 @@
+@import './variables.css';
+
+.footer {
+    background-color: var(--color-dark-gray);
+    color: var(--color-white);
+    text-align: center;
+    padding: var(--footer-height);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: var(--box-shadow-footer);
+    font-size: var(--font-size-small);
+    z-index: 1001;
+}
+
+.footer a {
+    color: var(--color-footer-link);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
