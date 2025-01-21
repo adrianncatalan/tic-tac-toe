@@ -21,3 +21,25 @@
 .footer a:hover {
     text-decoration: underline;
 }
+
+/* Media Queries */
+@media (max-width: 1024px) {
+    .footer {
+        font-size: var(--font-size-medium);
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        font-size: var(--font-size-small);
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        font-size: var(--font-size-xsmall);
+        padding: 8px;
+    }
+}

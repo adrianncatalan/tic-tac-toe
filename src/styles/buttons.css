@@ -63,3 +63,22 @@ button {
 #reset-all:hover {
   background-color: var(--color-warning-hover);
 }
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  button {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  button {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  button {
+    font-size: 10px;
+  }
+}

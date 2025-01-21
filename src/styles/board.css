@@ -233,3 +233,52 @@ button#back-button:active {
         opacity: 1;
     }
 }
+
+/* Media Queries */
+@media (max-width: 1024px) {
+    .board {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cell {
+        width: 80px;
+        height: 80px;
+        font-size: 24px;
+    }
+
+    #game {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .board {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cell {
+        width: 70px;
+        height: 70px;
+        font-size: 18px;
+    }
+
+    #game {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .board {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cell {
+        width: 60px;
+        height: 60px;
+        font-size: 14px;
+    }
+
+    #game {
+        padding: 10px;
+    }
+}
