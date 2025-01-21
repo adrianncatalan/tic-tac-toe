@@ -18,7 +18,6 @@ This project is a modern implementation of the classic **Tic-Tac-Toe (Three in a
 
 4. **Advanced Features:**
    - Back functionality using the browser's "Back" button.
-   - Optional game statistics (using a backend with **Node.js** and **MongoDB**).  
 
 5. **Web Deployment:**
    - The game is hosted on **Netlify**, providing easy and quick access.  

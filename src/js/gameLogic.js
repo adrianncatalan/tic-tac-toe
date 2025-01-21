@@ -1,9 +1,10 @@
 // src/gameLogic.js
+
 export const checkWinner = (board) => {
   const winningCombinations = [
-    [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horizontals
-    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Verticals
-    [0, 4, 8], [2, 4, 6]              // Diagonals
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horizontal
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Vertical
+    [0, 4, 8], [2, 4, 6]              // Diagonal
   ];
 
   for (let combo of winningCombinations) {
@@ -13,7 +14,7 @@ export const checkWinner = (board) => {
     }
   }
 
-  if (!board.includes(null)) return 'draw'; // Tie if there are no more empty cells
+  if (!board.includes(null)) return 'draw'; // Draw if there are no empty cells
   return null; // No winner yet
 };
 
