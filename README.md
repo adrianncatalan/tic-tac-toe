@@ -36,4 +36,4 @@ The project not only meets the basic requirements of the exercise but also showc
 
 ## How to Test
 1. Access the deployed project: ???
-2. Clone the repository from GitHub: 
+2. Clone the repository from GitHub: [https://github.com/adrianncatalan/tic-tac-toe]
