@@ -30,9 +30,8 @@ The project not only meets the basic requirements of the exercise but also showc
 
 ## Technologies Used
 - **Frontend:** JavaScript, HTML5, CSS3.  
-- **Backend (optional):** Node.js and MongoDB for storing statistics.  
 - **Deployment:** Netlify for the frontend and MongoDB Atlas for the database.
 
 ## How to Test
-1. Access the deployed project: ???
+1. Access the deployed project: [https://tictactoe-go.netlify.app/]
 2. Clone the repository from GitHub: [https://github.com/adrianncatalan/tic-tac-toe]
