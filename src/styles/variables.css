@@ -18,11 +18,29 @@
     --color-warning: #f39c12;
     --color-warning-hover: #e67e22;
     --color-footer-link: #61dafb;
+    --color-background-dark: #222;
+    --color-background-light: #292c2f;
+    --color-background-gradient: linear-gradient(135deg, #292c2f, #111);
+    --color-cell-background: #2e3338;
+    --color-cell-x: #f39c12;
+    --color-cell-o: #16a085;
+    --color-text-light: #fff;
+    --color-text-highlight: #e74c3c;
+    --color-warning: #f39c12;
+    --color-warning-hover: #f1c40f;
+    --color-computer: #16a085;
+    --color-computer-hover: #1abc9c;
 
     /* Font sizes */
     --font-size-small: 14px;
     --font-size-medium: 1rem;
     --font-size-large: 2rem;
+    --font-size-cell: 60px;
+    --font-size-message: 24px;
+    --font-size-winner: 32px;
+    --font-size-turn: 18px;
+    --font-size-board: 20px;
+    --font-size-score: 22px;
 
     /* Dimensions */
     --width-cell: 100px;
@@ -32,16 +50,38 @@
     --height-modal: 80%;
     --width-right-side: 50%;
     --footer-height: 20px;
+    --width-cell: 120px;
+    --height-cell: 120px;
+    --width-board: 420px;
+    --margin-board: 10px;
+    --max-width-board: 600px;
+    --max-width-modal: 600px;
 
     /* Spacing */
     --padding-button: 10px 20px;
     --margin-button: 10px;
     --gap-board: 5px;
+    --padding-button: 10px 20px;
+    --padding-board: 10px;
+    --margin-cell: 0 auto;
+    --margin-message: 20px 0 20px 0;
 
     /* Shadows */
     --box-shadow-button-hover: 0 0 10px 2px rgba(255, 255, 255, 0.5);
     --box-shadow-footer: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    --box-shadow-cell: 0 5px 15px rgba(0, 0, 0, 0.5);
+    --box-shadow-button-hover: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --box-shadow-button-active: 0 5px 15px rgba(0, 0, 0, 0.3);
 
     /* Transitions */
     --transition-ease: ease-in-out 0.3s;
+    --transition-cell: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    --transition-button: transform 0.2s ease-in-out;
+    --transition-message: opacity 0.3s ease-in-out;
+
+    /* Animations */
+    --animation-glow: 1s infinite alternate;
+    --animation-bounce: 1s ease;
+    --animation-vibrate: 1s linear infinite;
+    --animation-fadeIn: 1s ease-in-out;
 }

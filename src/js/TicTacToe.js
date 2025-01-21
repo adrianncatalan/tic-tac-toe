@@ -11,6 +11,9 @@ class TicTacToe {
         this.player1 = '';
         this.player2 = '';
         this.gameModeSelected = false;
+        this.player1Score = 0;
+        this.player2Score = 0;
+        this.isComputerTurn = false;
 
         // DOM element references
         this.cells = document.querySelectorAll('.cell');
@@ -57,7 +60,6 @@ class TicTacToe {
         this.startButton.addEventListener('click', () => this.startGame());
         this.buttons.forEach(button => button.addEventListener('click', (e) => this.toggleActiveState(e)));
 
-        // Assign opponent choice buttons
         this.humanButton.addEventListener('click', () => {
             this.gameMode = 'human';
             document.querySelector('#player2-section').classList.remove('hidden');
@@ -98,7 +100,13 @@ class TicTacToe {
     }
 
     resetAllButton() {
-        this.resetAll.addEventListener('click', () => location.reload());
+        this.resetAll.addEventListener('click', () => {
+            location.reload();
+            this.player1Score = 0;
+            this.player2Score = 0;
+            document.getElementById('player1-score').textContent = `Player 1: 0`;
+            document.getElementById('player2-score').textContent = `Player 2: 0`;
+        });
     }
 
     updateBoard() {
@@ -109,21 +117,55 @@ class TicTacToe {
         });
 
         this.winner = checkWinner(this.board);
+
+        const turnMessage = document.getElementById('turn-message');
+
         if (this.winner) {
             if (this.winner === 'draw') {
                 this.message.textContent = "It's a draw!";
                 this.winnerMessage.textContent = '';
             } else {
-                this.message.textContent = `${this.winner} wins!`;
+                if (this.winner === 'X') {
+                    this.player1Score++;
+                    this.message.textContent = `${this.player1} wins!`;
+                } else {
+                    this.player2Score++;
+                    this.message.textContent = `${this.player2} wins!`;
+                }
+
                 this.winnerMessage.textContent = this.winner === 'X' ? this.player1 : this.player2;
+                document.getElementById('player1-score').textContent = `Player 1: ${this.player1Score}`;
+                document.getElementById('player2-score').textContent = this.gameMode !== 'computer' ? `Player 2: ${this.player2Score}` : `Computer: ${this.player2Score}`;
+                this.message.classList.add('animated-message');
             }
             return;
         }
 
-        this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
+        if (this.gameMode === 'computer') {
+            let aux = false;
+            if (this.currentPlayer === 'X' && !aux) {
+                aux = true;
+                turnMessage.textContent = `${this.player1}'s Turn`;
+            }
 
-        if (this.gameMode === 'computer' && this.currentPlayer === 'O') {
-            this.computerMove();
+            if (this.currentPlayer === 'O' && aux) {
+                aux = false;
+                turnMessage.textContent = `Computer's Turn`;
+            }
+        } else {
+            turnMessage.textContent = `${this.currentPlayer === 'X' ? this.player1 : this.player2}'s Turn`;
+        }
+
+        if (this.currentPlayer === 'X') {
+            if (this.gameMode === 'computer') {
+                this.currentPlayer = 'O';
+                this.computerMove();
+            } else {
+
+                this.currentPlayer = 'O';
+            }
+        } else {
+            this.currentPlayer = 'X';
         }
     }
 
@@ -137,6 +179,7 @@ class TicTacToe {
         const availableCells = this.board
             .map((val, index) => (val === null ? index : null))
             .filter(val => val !== null);
+
         let move;
 
         if (this.difficulty === 'easy') {
@@ -149,6 +192,7 @@ class TicTacToe {
 
         this.board[move] = 'O';
         this.updateBoard();
+        this.currentPlayer = 'X';
     }
 
     easyAI(availableCells) {
@@ -197,6 +241,12 @@ class TicTacToe {
         this.player2 = this.gameMode === 'human' ? this.player2Input.value.trim() : 'Computer';
         this.difficulty = this.gameMode === 'computer' ? document.querySelector('#difficulty').value : 'easy';
         this.currentPlayer = Math.random() < 0.5 ? 'X' : 'O';
+        document.getElementById('player1-score').textContent = `Player 1: 0`;
+        if (this.gameMode === 'computer') {
+            document.getElementById('player2-score').textContent = `Computer: 0`;
+        } else {
+            document.getElementById('player2-score').textContent = `Player 2: 0`;
+        }
 
         if (this.gameMode === 'computer' && this.currentPlayer === 'O') {
             this.computerMove();

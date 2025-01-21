@@ -9,10 +9,11 @@ button {
   margin: var(--margin-button);
   width: var(--width-board);
   transition: var(--transition-ease);
+  transform: scale(1.05);
 }
 
 .button-only:hover {
-  transform: scale(1.05);
+  transform: scale(1.15);
 }
 
 .button-only.active {

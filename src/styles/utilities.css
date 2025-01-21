@@ -5,3 +5,7 @@
 .full-width {
     width: 100%;
 }
+
+.main-background {
+    background: linear-gradient(135deg, #1e2a3a, #1c2833);
+}

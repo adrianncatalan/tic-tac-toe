@@ -11,12 +11,12 @@
   </head>
 
   <body>
-    <div class="wrapper">
+    <div class="wrapper main-background">
       <!-- Modal -->
       <div id="modal" class="modal">
         <div class="modal-content">
           <div class="left-side">
-            <h1>
+            <h1 class="title">
               <span class="welcome" id="welcome-text">Welcome</span> to the
               Tic-Tac-Toe Game
             </h1>
@@ -59,6 +59,12 @@
 
       <!-- Game board -->
       <div id="game">
+        <p id="turn-message" class="turn-message"></p>
+        <div id="scoreboard" class="scoreboard">
+          <p><span id="player1-score"></span></p>
+          <p><span id="player2-score"></span></p>
+        </div>
+
         <div class="board">
           <div class="cell"></div>
           <div class="cell"></div>
@@ -70,12 +76,12 @@
           <div class="cell"></div>
           <div class="cell"></div>
         </div>
-        <p class="message"></p>
-        <div style="width: 50%">
+        <div class="full-width btns-box">
           <button class="reset-button">Play Again</button>
           <button id="back-button">Back</button>
+          <p class="message"></p>
+          <p class="winner"></p>
         </div>
-        <p class="winner"></p>
       </div>
 
       <!-- Footer -->
@@ -107,6 +113,6 @@
         </div>
       </footer>
     </div>
-    <script type="module" src="/src/js/app.js"></script>
+    <script type="module" src="/src/js/app.js" defer></script>
   </body>
 </html>
