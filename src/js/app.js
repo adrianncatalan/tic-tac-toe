@@ -23,6 +23,14 @@ const difficultySection = document.querySelector('#difficulty-section');
 const validationModal = document.querySelector('#validation-modal'); // Validation modal
 const validationMessage = document.querySelector('#validation-message');
 const closeValidationModalButton = document.querySelector('#close-validation-modal');
+const resetAll = document.getElementById('reset-all');
+
+// Functior to reset all
+const reset = () => {
+  resetAll.addEventListener('click', () => {
+    location.reload();
+  });
+}
 
 // Function to update the interface
 const updateBoard = () => {
@@ -188,3 +196,4 @@ document.querySelector('#computer').addEventListener('click', () => {
 
 // Start the game
 updateBoard();
+reset();

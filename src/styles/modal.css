@@ -9,6 +9,7 @@
   justify-content: center;
   align-items: center;
   z-index: 2000;
+  
 }
 
 #validation-modal .validation-modal-content {
@@ -19,12 +20,16 @@
   background-color: rgb(141, 160, 201);
   border-radius: 8px;
   overflow: hidden;
+  
 }
 
 #validation-modal .validation-modal-content .left-side {
   flex: 1;
   padding: 20px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #validation-modal .validation-modal-content .right-side {
