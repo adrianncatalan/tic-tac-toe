@@ -113,6 +113,7 @@
 
 button.reset-button {
     background: linear-gradient(135deg, var(--color-warning), var(--color-warning-hover));
+    max-width: 50%;
 }
 
 button.reset-button:hover {
@@ -128,6 +129,7 @@ button.reset-button:active {
 
 button#back-button {
     background: linear-gradient(135deg, var(--color-computer), var(--color-computer-hover));
+    width: 50%;
 }
 
 button#back-button:hover {
@@ -238,12 +240,13 @@ button#back-button:active {
 @media (max-width: 1024px) {
     .board {
         grid-template-columns: repeat(3, 1fr);
+        max-width: 100%;
     }
 
     .cell {
-        width: 80px;
-        height: 80px;
-        font-size: 24px;
+        width: 150px;
+        height: 100px;
+        font-size: 60px;
     }
 
     #game {
@@ -254,12 +257,13 @@ button#back-button:active {
 @media (max-width: 768px) {
     .board {
         grid-template-columns: repeat(3, 1fr);
+        max-width: 80%;
     }
 
     .cell {
-        width: 70px;
-        height: 70px;
-        font-size: 18px;
+        width: 100px;
+        height: 80px;
+        font-size: 50px;
     }
 
     #game {
@@ -270,18 +274,42 @@ button#back-button:active {
 @media (max-width: 480px) {
     .board {
         grid-template-columns: repeat(3, 1fr);
+        max-width: 90%;
+    }
+
+    .cell {
+        width: 75px;
+        height: 75px;
+        font-size: 40px;
+    }
+
+    #game {
+        padding: 10px;
+    }
+
+    #scoreboard p,
+    #scoreboard span {
+        font-size: var(--font-size-small);
+    }
+}
+
+@media (max-width: 320px) {
+    .board {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 90%;
     }
 
     .cell {
         width: 60px;
         height: 60px;
-        font-size: 14px;
+        font-size: 40px;
     }
 
     #game {
         padding: 10px;
     }
 }
+
 
 .winning-cell {
     background-color: var(--color-winner);
