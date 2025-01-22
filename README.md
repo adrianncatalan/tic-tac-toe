@@ -30,7 +30,7 @@ The project not only meets the basic requirements of the exercise but also showc
 
 ## Technologies Used
 - **Frontend:** JavaScript, HTML5, CSS3.  
-- **Deployment:** Netlify for the frontend and MongoDB Atlas for the database.
+- **Deployment:** Netlify.
 
 ## How to Test
 1. Access the deployed project: [https://tictactoe-go.netlify.app/]
