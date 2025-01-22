@@ -282,3 +282,20 @@ button#back-button:active {
         padding: 10px;
     }
 }
+
+.winning-cell {
+    background-color: var(--color-winner);
+    animation: highlight 0.5s ease-out forwards;
+}
+
+@keyframes highlight {
+    0% {
+        background-color: var(--color-text-highlight-1);
+        transform: scale(1);
+    }
+
+    100% {
+        background-color: var(--color-text-highlight-2);
+        transform: scale(1.1);
+    }
+}

@@ -43,3 +43,16 @@
         padding: 8px;
     }
 }
+
+
+@media (max-width: 768px) {
+    body {
+        padding-bottom: var(--footer-height);
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-bottom: var(--footer-height);
+    }
+}

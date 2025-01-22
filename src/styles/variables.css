@@ -30,6 +30,9 @@
     --color-warning-hover: #f1c40f;
     --color-computer: #16a085;
     --color-computer-hover: #1abc9c;
+    --color-winner: #b6800d;
+    --color-highlight-1: #f39c12;
+    --color-highlight-2: #e67e22;
 
     /* Font sizes */
     --font-size-small: 14px;

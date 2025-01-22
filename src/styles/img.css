@@ -12,25 +12,30 @@
 .right-side img {
   width: 100%;
   height: auto;
-  object-fit: fill;
+  object-fit: cover;
   display: block;
 }
 
-/* Media Queries */
 @media (max-width: 1024px) {
   .right-side img {
-    width: 80%;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 }
 
 @media (max-width: 768px) {
   .right-side img {
-    width: 70%;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 }
 
 @media (max-width: 480px) {
   .right-side img {
-    width: 60%;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 }

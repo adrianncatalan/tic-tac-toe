@@ -137,6 +137,7 @@ class TicTacToe {
                 document.getElementById('player1-score').textContent = `Player 1: ${this.player1Score}`;
                 document.getElementById('player2-score').textContent = this.gameMode !== 'computer' ? `Player 2: ${this.player2Score}` : `Computer: ${this.player2Score}`;
                 this.message.classList.add('animated-message');
+                this.highlightWinningCells();
             }
             return;
         }
@@ -161,11 +162,29 @@ class TicTacToe {
                 this.currentPlayer = 'O';
                 this.computerMove();
             } else {
-
                 this.currentPlayer = 'O';
             }
         } else {
             this.currentPlayer = 'X';
+        }
+    }
+
+    highlightWinningCells() {
+        const winningCombinations = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horizontal
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Vertical
+            [0, 4, 8], [2, 4, 6]              // Diagonal
+        ];
+
+        const winningCombo = winningCombinations.find(combo => {
+            const [a, b, c] = combo;
+            return this.board[a] && this.board[a] === this.board[b] && this.board[a] === this.board[c];
+        });
+
+        if (winningCombo) {
+            winningCombo.forEach(index => {
+                this.cells[index].classList.add('winning-cell');
+            });
         }
     }
 
@@ -227,6 +246,7 @@ class TicTacToe {
         this.currentPlayer = 'X';
         this.message.textContent = '';
         this.winnerMessage.textContent = '';
+        this.cells.forEach(cell => cell.classList.remove('winning-cell')); // Reset winning cell styles
         this.updateBoard();
     }
 
