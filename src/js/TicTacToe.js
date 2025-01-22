@@ -160,9 +160,7 @@ class TicTacToe {
         if (this.currentPlayer === 'X') {
             if (this.gameMode === 'computer') {
                 this.currentPlayer = 'O';
-                setTimeout(() => {
-                    this.computerMove();
-                  }, 2000);                  
+                this.computerMove();
             } else {
                 this.currentPlayer = 'O';
             }
@@ -271,10 +269,7 @@ class TicTacToe {
         }
 
         if (this.gameMode === 'computer' && this.currentPlayer === 'O') {
-            setTimeout(() => {
-                this.computerMove();
-            }, 2000);
-
+            this.computerMove();
         }
 
         this.modal.style.display = 'none';
